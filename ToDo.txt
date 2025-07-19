@@ -1,0 +1,12 @@
+Main:
+    1)Implement form layouts
+    2)Implement json building
+    3)Implement form posting function
+    4)Implement drop down dynamic searching
+    5)Implement drop down sourcing
+    6)Implement power automate server API
+    7)Deployment
+    8)Test in mobile/tablet
+Bugs:
+    1)user unaware of if data entered or not
+    2)No uploader traceability

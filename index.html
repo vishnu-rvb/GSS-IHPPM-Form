@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSS Inhouse PPM Form</title>
+    <script src="script.js " defer></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="heading">
+    <img src="assets/Logo.png" alt="Logo" style="height: 50px;">
+    <h1>GSS Inhouse PPM Form</h1>
+    </div>
+    <div id="reader" width="600px"></div>
+    
+    <!--templates for defect details-->
+    <template id="template-defect details">
+    <div class="dynamic-row">
+        <!--defect([...])-->
+        <label for="input-defect">defect:</label>
+        <!--defect qty(int)-->
+        <label for="input-defect qty">defect qty:</label>
+        <input type="number" id="input-defect qty" name="defect qty" min="0">
+        <!--root cause([...dynamic sourced])-->
+        <!--Root cause simplified([...dynamic sourced])-->
+        <!--4MT(['Material','Man','Method','Machine','Tool'])-->
+        <label for="input-4MT">4MT:</label>
+        <select id="input-4MT" name="4MT" required>
+            <option value="Material">Material</option>
+            <option value="Man">Man</option>
+            <option value="Method">Method</option>
+            <option value="Machine">Machine</option>
+            <option value="Tool">Tool</option>
+        </select>
+        <!--Rework/Rejection(['Rework','Rejection'])-->
+        <label for="input-Rework/Rejection">Rework/Rejection:</label>
+        <select id="input-Rework/Rejection" name="Rework/Rejection" required>
+            <option value="Rework">Rework</option>
+            <option value="Rejection">Rejection</option>
+        </select>
+        <button type="button" onclick="this.parentElement.remove()">-</button>
+    </div>
+    </template>
+
+
+    <form id="form">
+        <!--Date(Date)-->
+        <label for="input-Date">Date:</label>
+        <input type="date" id="input-Date" name="Date" required>
+        <!--Shift([ 'A','B','C' ])-->
+        <label for="input-Shift">Shift:</label>
+        <select id="input-Shift" name="Shift" required>
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+        </select>
+        <!--Line([...static sourced])-->
+        <!--operator(string)-->
+        <label for="input-operator">operator:</label>
+        <input type="text" id="input-operator" name="operator" required>
+        <!--part(string)-->
+        <label for="input-part">part:</label>
+        <input type="text" id="input-part" name="part">
+        <!--width/height(string)-->
+        <label for="input-width/height">width/height:</label>
+        <input type="text" id="input-width/height" name="width/height">
+        <!--thk(float)-->
+        <label for="input-thk">thk:</label>
+        <input type="number" id="input-thk" name="thk" min="0" step=".01">
+        <!--Length(int)-->
+        <label for="input-Length">Length:</label>
+        <input type="number" id="input-Length" name="Length" min="0">
+        <!--RM Grade(['HR','HRPO','CR','GP'])-->
+        <label for="input-RM Grade">RM Grade:</label>
+        <select id="input-RM Grade" name="RM Grade" required>
+            <option value="HR">HR</option>
+            <option value="HRPO">HRPO</option>
+            <option value="CR">CR</option>
+            <option value="GP">GP</option>
+        </select>        
+        <!--ok qty(int)-->
+        <label for="input-ok qty">ok qty:</label>
+        <input type="number" id="input-ok qty" name="ok qty" min="0">
+
+        <!--defect details-->
+        <div style="display: flex; align-items: center; gap: 10px;">
+        <label for="input-defect details">defect details:</label>
+        <button type="button" onclick="addRow('defect details')">+ Add Defects</button>
+        </div>
+        <div id="defect details-container"></div>
+
+        <!--submit,clear buttons-->
+        <div style="margin-top: 20px; display: block; width: 100%;">
+            <button type="submit">Submit</button>
+            <button type="button" class="clear" onclick="clearForm()">Clear</button>
+        </div>
+    </form>
+
+</body>
+</html>
