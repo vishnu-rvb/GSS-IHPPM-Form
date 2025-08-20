@@ -15,34 +15,42 @@
     <div id="reader" width="600px"></div>
     
     <!--templates for defect details-->
-    <template id="template-defect details">
-    <div class="dynamic-row">
-        <!--defect([...])-->
-        <label for="input-defect">defect:</label>
-        <!--defect qty(int)-->
-        <label for="input-defect qty">defect qty:</label>
-        <input type="number" id="input-defect qty" name="defect qty" min="0">
-        <!--root cause([...dynamic sourced])-->
-        <!--Root cause simplified([...dynamic sourced])-->
-        <!--4MT(['Material','Man','Method','Machine','Tool'])-->
-        <label for="input-4MT">4MT:</label>
-        <select id="input-4MT" name="4MT" required>
-            <option value="Material">Material</option>
-            <option value="Man">Man</option>
-            <option value="Method">Method</option>
-            <option value="Machine">Machine</option>
-            <option value="Tool">Tool</option>
-        </select>
-        <!--Rework/Rejection(['Rework','Rejection'])-->
-        <label for="input-Rework/Rejection">Rework/Rejection:</label>
-        <select id="input-Rework/Rejection" name="Rework/Rejection" required>
-            <option value="Rework">Rework</option>
-            <option value="Rejection">Rejection</option>
-        </select>
-        <button type="button" onclick="this.parentElement.remove()">-</button>
-    </div>
+    <template id="template-defect_details">
+        <div class="dynamic-row">
+            <!--defect([...])-->
+            <label for="input-defects">defect:</label>
+            <input list="datalist-defect" name="defect" id="input-defect">
+            <datalist id="datalist-defect">
+            </datalist>        
+            <!--defect qty(int)-->
+            <label for="input-defect qty">defect qty:</label>
+            <input type="number" id="input-defect qty" name="defect qty" min="0">
+            <!--root cause(string)-->
+            <label for="input-root cause">Root cause:</label>
+            <input type="text" id="input-root cause" name="root cause">
+            <!--Root cause simplified([...dynamic sourced])-->
+            <label for="input-root cause simplified">Root cause simplified:</label>
+            <input list="datalist-root cause simplified" name="root cause simplified" id="input-root cause simplified">
+            <datalist id="datalist-root cause simplified">
+            </datalist>      
+            <!--4MT(['Material','Man','Method','Machine','Tool'])-->
+            <label for="input-4MT">4MT:</label>
+            <select id="input-4MT" name="4MT" required>
+                <option value="Material">Material</option>
+                <option value="Man">Man</option>
+                <option value="Method">Method</option>
+                <option value="Machine">Machine</option>
+                <option value="Tool">Tool</option>
+            </select>
+            <!--Rework/Rejection(['Rework','Rejection'])-->
+            <label for="input-Rework/Rejection">Rework/Rejection:</label>
+            <select id="input-Rework/Rejection" name="Rework/Rejection" required>
+                <option value="Rework">Rework</option>
+                <option value="Rejection">Rejection</option>
+            </select>
+            <button type="button" onclick="this.parentElement.remove()">-</button>
+        </div>
     </template>
-
 
     <form id="form">
         <!--Date(Date)-->
@@ -56,9 +64,16 @@
             <option value="C">C</option>
         </select>
         <!--Line([...static sourced])-->
-        <!--operator(string)-->
+        <label for="input-line">line:</label>
+        <input list="datalist-line" name="line" id="input-line">
+        <datalist id="datalist-line">
+        </datalist>
+        <!--operator([...static sourced])-->
         <label for="input-operator">operator:</label>
-        <input type="text" id="input-operator" name="operator" required>
+        <!--<input type="text" id="input-operator" name="operator" required>-->
+        <input list="datalist-operator" name="operator" id="input-operator">
+        <datalist id="datalist-operator">
+        </datalist>
         <!--part(string)-->
         <label for="input-part">part:</label>
         <input type="text" id="input-part" name="part">
@@ -69,8 +84,8 @@
         <label for="input-thk">thk:</label>
         <input type="number" id="input-thk" name="thk" min="0" step=".01">
         <!--Length(int)-->
-        <label for="input-Length">Length:</label>
-        <input type="number" id="input-Length" name="Length" min="0">
+        <label for="input-Length">Length(m):</label>
+        <input type="number" id="input-Length" name="Length" min="0" step=".001">
         <!--RM Grade(['HR','HRPO','CR','GP'])-->
         <label for="input-RM Grade">RM Grade:</label>
         <select id="input-RM Grade" name="RM Grade" required>
@@ -86,10 +101,11 @@
         <!--defect details-->
         <div style="display: flex; align-items: center; gap: 10px;">
         <label for="input-defect details">defect details:</label>
-        <button type="button" onclick="addRow('defect details')">+ Add Defects</button>
+        <button type="button" onclick="addRow('defect_details')">+ Add Defects</button>
         </div>
-        <div id="defect details-container"></div>
-
+        <div id="defect_details-container"></div>
+        <label for="input-uploader">Uploaded by:</label>
+        <input type="text" id="input-uploader" name="uploader" required>
         <!--submit,clear buttons-->
         <div style="margin-top: 20px; display: block; width: 100%;">
             <button type="submit">Submit</button>

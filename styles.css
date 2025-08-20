@@ -13,7 +13,8 @@ body {
 }
 .logo {height:50px;width:auto;}
 form {
-    max-width: 400px;
+    /*max-width: 400px;*/
+    width: 100%;
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #ccc;
@@ -24,15 +25,19 @@ label {
     display: block;
     margin-bottom: 8px;
     font-weight: bold;
+    min-height:30px;
 }
 input[type="text"], input[type="date"], input[type="file"],select {
-    width: 100%;
+    /*width: 100%;*/
+    min-width: 100px;
+    min-height:30px;
     padding: 8px;
     margin-bottom: 16px;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
 }
+
 button {
     padding: 10px 20px;
     margin-right: 10px;
@@ -49,10 +54,6 @@ button.clear {background-color: #f44336;}
     margin: 5px 0;
     align-items: center;
     }
-
-/* .dynamic-row input[name="issue"] {flex:3;min-width:150px;}
-.dynamic-row input[name="qty"] {flex: 1;min-width:60px;max-width:80px;}
-.dynamic-row select[name="status"] {flex:2;min-width:100px;max-width:150px;} */
 
 #loading-overlay {
     position: fixed;
