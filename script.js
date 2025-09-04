@@ -89,17 +89,16 @@ async function submitForm(event){
         };
         //collecting defect details
         const defectDetails = Array.from(document.querySelectorAll('#defect_details-container .dynamic-row'));
-        //sending data
         let passCount=0;
-        for(let i=0;i<defectDetails.length;i++){
-            let row=defectDetails[i];
+        //sending data
+        if(defectDetails.length==0){
             let data={...CommonData,
-                defect:row.querySelector('input[name="defect"]')?.value.trim(),
-                defect_qty:parseInt(row.querySelector('input[name="defect qty"]')?.value)|| 1,
-                root_cause:row.querySelector('input[name="root cause"]')?.value.trim(),
-                root_cause_simplified:row.querySelector('input[name="root cause simplified"]')?.value.trim(),
-                MT:row.querySelector('select[name="4MT"]')?.value.trim(),
-                rew_rej:row.querySelector('select[name="Rework/Rejection"]')?.value.trim()
+                defect:'',
+                defect_qty:0,
+                root_cause:'',
+                root_cause_simplified:'',
+                MT:'',
+                rew_rej:''
             };
             const response= await fetch(URL,{
                 method: 'POST',headers: {'Content-Type':'application/json'},
@@ -108,6 +107,26 @@ async function submitForm(event){
             const result = await response.json();
             console.log('Response:', result);
             if(response.ok){passCount+=1;}
+        }
+        else{
+            for(let i=0;i<defectDetails.length;i++){
+                let row=defectDetails[i];
+                let data={...CommonData,
+                    defect:row.querySelector('input[name="defect"]')?.value.trim(),
+                    defect_qty:parseInt(row.querySelector('input[name="defect qty"]')?.value)|| 1,
+                    root_cause:row.querySelector('input[name="root cause"]')?.value.trim(),
+                    root_cause_simplified:row.querySelector('input[name="root cause simplified"]')?.value.trim(),
+                    MT:row.querySelector('select[name="4MT"]')?.value.trim(),
+                    rew_rej:row.querySelector('select[name="Rework/Rejection"]')?.value.trim()
+                };
+                const response= await fetch(URL,{
+                    method: 'POST',headers: {'Content-Type':'application/json'},
+                    body: JSON.stringify(data)
+                });
+                const result = await response.json();
+                console.log('Response:', result);
+                if(response.ok){passCount+=1;}
+            };
         };
         if(passCount>0){alert(`PPM details updated ${passCount}/${defectDetails.length}`);}
         else{alert('Failed to submit details');}

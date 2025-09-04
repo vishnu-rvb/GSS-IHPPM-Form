@@ -10,3 +10,4 @@ Main:
 Bugs:
     1)user unaware of if data entered or not -> completed
     2)No uploader traceability -> completed
+    3)Submit fail if no defect detail row present -> completed
