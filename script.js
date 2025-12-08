@@ -2,7 +2,8 @@ let defects=[];
 let rootCauses=[];
 async function loadOptions(datalistID,command='get options:line',apply=true){
     //fetching options
-    const URL = 'https://prod-17.centralindia.logic.azure.com:443/workflows/4ff2d0a0905548998f244df6480ebde1/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=zq0rd6tB-u7GBgObq4RH3mJrO7HdpOASDmFHmIm-Lic';
+    const URL = https://defaultd44ff7234fa7405eafc043c21e5730.43.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/4ff2d0a0905548998f244df6480ebde1/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=q5r0Dy7y48s3WlK7jMtJlTCSl-OAi1a24RV4Kod_PrA';
+    //const URL = 'https://prod-17.centralindia.logic.azure.com:443/workflows/4ff2d0a0905548998f244df6480ebde1/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=zq0rd6tB-u7GBgObq4RH3mJrO7HdpOASDmFHmIm-Lic';
     const data = {
         cmd:command.split(':')[0].trim(),
         options:command.split(':')[1].trim()
